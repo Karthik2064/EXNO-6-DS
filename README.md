@@ -16,265 +16,78 @@ STEP 3:Apply data visualization techniques to identify the patterns of the data.
 STEP 4:Apply the various data visualization tools wherever necessary.
 
 STEP 5:Include Necessary parameters in each functions.
+# google colab link
+ https://colab.research.google.com/drive/12nxfTunxUo_7pR_kOkj95gEcU3t7JMPo?usp=sharing
 
 # Coding and Output:
-```python
-import seaborn as sns
-import matplotlib.pyplot as plt
-x=[1,2,3,4,5]
-y=[3,6,2,7,1]
-sns.lineplot(x=x,y=y)
-```
-<img width="638" height="447" alt="image" src="https://github.com/user-attachments/assets/ec6097fa-8b44-4b29-8966-54196a39317e" />
-
-```python
-df=sns.load_dataset("tips")
-df
-```
-<img width="552" height="404" alt="image" src="https://github.com/user-attachments/assets/1aac046f-a7e7-4398-aee4-06763ff94220" />
-
-
-```python
-sns.lineplot(x="total_bill",y="tip",data=df,hue="sex",linestyle='solid',legend="auto")
-```
-
-<img width="655" height="461" alt="image" src="https://github.com/user-attachments/assets/315d1339-f833-406c-8570-57e947116d6d" />
-
-
-```python
-x=[1,2,3,4,5]
-y1=[3,5,2,6,1]
-y2=[1,6,4,3,8]
-y3=[5,2,7,1,4]
-sns.lineplot(x=x,y=y1)
-sns.lineplot(x=x,y=y2)
-sns.lineplot(x=x,y=y3)
-plt.title('Multi-:Line Plot')
-plt.xlabel('X-Label')
-plt.ylabel('Y-Label')
-```
-<img width="654" height="492" alt="image" src="https://github.com/user-attachments/assets/365fd556-5303-4c66-8b8b-855c8587469e" />
-
-
-```python
-tips=sns.load_dataset('tips')
-avg_total_bill=tips.groupby('day')['total_bill'].mean()
-avg_tip=tips.groupby('day')['tip'].mean()
-plt.figure(figsize=(8,6))
-p1=plt.bar(avg_total_bill.index,avg_total_bill,label='Total Bill')
-p2=plt.bar(avg_tip.index,avg_tip,label='Tip')
-plt.xlabel('Day of the Week')
-plt.ylabel('Amount')
-plt.title('Average Total Bill and Tip by Day')
-plt.legend()
-```
-<img width="859" height="658" alt="image" src="https://github.com/user-attachments/assets/bd8d62c0-92a2-4fc1-8be5-7606571ce6d3" />
-
-
-```python
-avg_total_bill=tips.groupby('time')['total_bill'].mean()
-avg_tip=tips.groupby('time')['tip'].mean()
-p1=plt.bar(avg_total_bill.index,avg_total_bill,label='Total Bill',width=0.4)
-p2=plt.bar(avg_tip.index,avg_tip,bottom=avg_total_bill,label='Tip',width=0.4)
-plt.xlabel('Time of Day')
-plt.ylabel('Amount')
-plt.title('Average Total Bill and Tip by Time of Day')
-plt.legend()
-```
-<img width="877" height="540" alt="image" src="https://github.com/user-attachments/assets/db186a95-e0af-4053-acb8-52299624bec4" />
-
-
-```python
-years=range(2000,2012)
-apples=[0.895,0.91,0.919,0.926,0.929,0.931,0.934,0.936,0.937,0.9375,0.9372,0.939]
-oranges=[0.962,0.941,0.930,0.923,0.918,0.908,0.907,0.904,0.901,0.898,0.9,0.896]
-plt.bar(years,apples)
-plt.bar(years,oranges,bottom=apples)
-```
-<img width="616" height="445" alt="image" src="https://github.com/user-attachments/assets/5a766e84-c2ce-406f-b3ab-fc9964ccf6fd" />
-
-
-```python
-import seaborn as sns
-dt=sns.load_dataset('tips')
-sns.barplot(x='day',y='total_bill',hue='sex',data=dt,palette='Set1')
-plt.xlabel('Day of the Week')
-plt.ylabel('Total Bill')
-plt.title('Total Bill by Day and Gender')
-```
-<img width="689" height="484" alt="image" src="https://github.com/user-attachments/assets/39a8ff6c-20dc-4943-a32b-c662fd950498" />
-
-
-```python
-import pandas as pd
-tit=pd.read_csv("/content/titanic_dataset (2).csv")
-tit
-```
-<img width="871" height="750" alt="image" src="https://github.com/user-attachments/assets/220d1fa5-2db0-4dbb-8a7d-be84539a1088" />
-
-
-```python
-plt.figure(figsize=(8,5))
-sns.barplot(x='Embarked',y='Fare',data=tit,palette='rainbow')
-plt.title("Fare of Passenger by Embarked Town")
-```
-<img width="882" height="594" alt="image" src="https://github.com/user-attachments/assets/23f4d593-8ca2-4602-a1b9-30b99411a3c7" />
-
-
-```python
-plt.figure(figsize=(8,5))
-sns.barplot(x='Embarked',y='Fare',data=tit,palette='rainbow',hue='Pclass')
-plt.title("Fare of Passenger by Embarked Town,Divided by Class")
-```
-<img width="834" height="501" alt="image" src="https://github.com/user-attachments/assets/f4ed4fc9-310f-47f4-8500-66a7a857cc36" />
-
-
-```python
-tips=sns.load_dataset('tips')
-sns.scatterplot(x='total_bill',y='tip',hue='sex',data=tips)
-plt.xlabel('Total Bill')
-plt.ylabel('Tip Amount')
-plt.title('Scatter Plot of Total Bill vs. Tip Amount')
-```
-<img width="697" height="492" alt="image" src="https://github.com/user-attachments/assets/ca29aebf-ab65-4bbc-8b55-91c18ec653db" />
-
-
-```python
-import seaborn as sns
-import numpy as np
-import pandas as pd
-np.random.seed(1)
-num_var=np.random.randn(1000)
-num_var=pd.Series(num_var,name="Numerical Variable")
-num_var
-```
-<img width="272" height="446" alt="image" src="https://github.com/user-attachments/assets/fae05551-770c-470e-a238-30de566dac92" />
-
-
-```python
-sns.histplot(data=num_var,kde=True)
-```
-<img width="688" height="463" alt="image" src="https://github.com/user-attachments/assets/544f70c5-9079-4413-af4d-419dbe742db9" />
-
-
-```python
-sns.histplot(data=tit,x="Pclass",hue="Survived",kde=True)
-```
-<img width="659" height="455" alt="image" src="https://github.com/user-attachments/assets/bcf3a0d7-3080-47ef-9290-2375c2ef2523" />
-
-
-```python
-import matplotlib.pyplot as plt
-np.random.seed(0)
-marks=np.random.normal(loc=70,scale=10,size=100)
-marks
-```
-<img width="659" height="367" alt="image" src="https://github.com/user-attachments/assets/5b49ca37-f0ce-4b51-aaec-dd489620bae2" />
-
-
-```python
-sns.histplot(data=marks,bins=10,kde=True,stat='count',cumulative=False,multiple='stack',element='bars',palette='Set1',shrink=0.7)
-plt.xlabel('Marks')
-plt.ylabel('Density')
-plt.title('Histogram of Student Marks')
-```
-<img width="859" height="500" alt="image" src="https://github.com/user-attachments/assets/76d542c8-845d-4ec3-9a88-2e677b99465a" />
+<img width="741" height="513" alt="image" src="https://github.com/user-attachments/assets/358e9c14-7913-4f8a-830e-c05bf84617cd" />
+<img width="531" height="402" alt="image" src="https://github.com/user-attachments/assets/06ae5fa7-05e9-435c-849f-e94a661d6320" />
+<img width="604" height="455" alt="image" src="https://github.com/user-attachments/assets/19acdf23-21e3-4c96-9b13-607fd27db466" />
+<img width="532" height="366" alt="image" src="https://github.com/user-attachments/assets/332959cb-4f19-4325-80c5-9fa2db622225" />
+<img width="580" height="382" alt="image" src="https://github.com/user-attachments/assets/7d79e214-53de-4ffb-94c1-0fdc2663c198" />
+<img width="686" height="384" alt="image" src="https://github.com/user-attachments/assets/410f66b9-daf7-4a02-8f15-695603060343" />
+<img width="571" height="368" alt="image" src="https://github.com/user-attachments/assets/078625c4-33e3-452f-a7fb-f6f757bfbd89" />
+<img width="659" height="362" alt="image" src="https://github.com/user-attachments/assets/24edba9f-645d-4bbb-831f-701c30b72367" />
+<img width="556" height="456" alt="image" src="https://github.com/user-attachments/assets/94103d35-1960-4627-9030-070c443f2015" />
+<img width="614" height="471" alt="image" src="https://github.com/user-attachments/assets/b7c54672-c22f-447e-b00a-9022bde9d240" />
+<img width="605" height="432" alt="image" src="https://github.com/user-attachments/assets/4e86a416-ff05-42a6-abb6-c4af67dea524" />
+<img width="654" height="468" alt="image" src="https://github.com/user-attachments/assets/7b6ec4b3-b824-4049-ae1c-f0cd3202f12c" />
+<img width="633" height="403" alt="image" src="https://github.com/user-attachments/assets/28d8a720-349c-4676-b687-42f55bcedde6" />
+<img width="571" height="437" alt="image" src="https://github.com/user-attachments/assets/351a7937-44a6-47a0-af9f-b4646491e71e" />
+<img width="548" height="360" alt="image" src="https://github.com/user-attachments/assets/6270bb97-15c3-41a0-b81a-327ab7d2ea8f" />
+<img width="609" height="356" alt="image" src="https://github.com/user-attachments/assets/68b0b042-a7e1-4ce5-8fbe-b64e31655ab4" />
+<img width="550" height="527" alt="image" src="https://github.com/user-attachments/assets/9c1906a0-25ab-4f7f-b591-f44190cf8c58" />
+<img width="770" height="352" alt="image" src="https://github.com/user-attachments/assets/6a5ad097-52cf-4509-925f-ce90bd055525" />
+<img width="670" height="358" alt="image" src="https://github.com/user-attachments/assets/3c56ceb1-7e46-44d0-9be0-4d811a27e504" />
+<img width="761" height="345" alt="image" src="https://github.com/user-attachments/assets/be6b44a9-7335-4d02-b2f9-fc3a5e60fb5d" />
+<img width="602" height="487" alt="image" src="https://github.com/user-attachments/assets/fa2c44cd-2e12-4f0e-87ea-38f1a4cedd75" />
+<img width="573" height="400" alt="image" src="https://github.com/user-attachments/assets/71b807d5-fe2e-4ddc-b333-5481c47a881c" />
+<img width="655" height="211" alt="image" src="https://github.com/user-attachments/assets/1bd47b6f-04b9-41a2-bb85-3bc70e1be065" />
+<img width="568" height="408" alt="image" src="https://github.com/user-attachments/assets/47f68688-9335-4aec-97d0-57c2e4dbd3ea" />
+<img width="1023" height="568" alt="image" src="https://github.com/user-attachments/assets/7470c77d-3f43-4efa-9146-5a3e8da2fb49" />
+<img width="1200" height="231" alt="image" src="https://github.com/user-attachments/assets/76e093aa-3a24-4f3d-9e16-ca323c39cea4" />
+<img width="822" height="482" alt="image" src="https://github.com/user-attachments/assets/200d9e27-ff6d-4707-8dae-6ab3c12ac009" />
+<img width="837" height="290" alt="image" src="https://github.com/user-attachments/assets/201d9c3a-968b-4209-adbf-5070c73056af" />
+<img width="569" height="526" alt="image" src="https://github.com/user-attachments/assets/07351320-2b24-446f-b9cd-7ba10d172d09" />
+<img width="589" height="530" alt="image" src="https://github.com/user-attachments/assets/b71e8f21-02ed-4c1a-8f41-43099fb1e391" />
+<img width="527" height="491" alt="image" src="https://github.com/user-attachments/assets/1e5ebd0f-82de-4c2b-9f01-81879992cf1d" />
+<img width="639" height="436" alt="image" src="https://github.com/user-attachments/assets/afaa9121-74a2-462b-92aa-8f775ced0f35" />
+<img width="535" height="469" alt="image" src="https://github.com/user-attachments/assets/fa83d6a7-b758-4628-bd0c-bbd6745bee09" />
+<img width="558" height="478" alt="image" src="https://github.com/user-attachments/assets/5854a22e-36f0-41c1-8f1a-385ad13dc7cf" />
+<img width="1105" height="390" alt="image" src="https://github.com/user-attachments/assets/31f3b4f3-e3dd-430e-87e8-0d4641bb247e" />
 
 
 
-```python
-tips=sns.load_dataset('tips')
-sns.boxplot(x=tips['day'],y=tips['total_bill'],hue=tips['sex'])
-```
-<img width="648" height="463" alt="image" src="https://github.com/user-attachments/assets/2d6b5f60-6a9f-42cd-b68d-29d78510577d" />
 
 
-```python
-sns.boxplot(x="day",y="total_bill",hue="smoker",data=tips,linewidth=2,width=0.6,boxprops={"facecolor":"lightblue","edgecolor":"darkblue"},
-            whiskerprops={"color":"black","linestyle":"--","linewidth":1.5},capprops={"color":"black","linestyle":"--","linewidth":1.5})
-```
-<img width="691" height="475" alt="image" src="https://github.com/user-attachments/assets/4840a9ce-dc30-40d0-a303-b3b6e20755b0" />
 
 
-```python
-sns.boxplot(x='Pclass',y='Age',data=tit,palette='rainbow')
-plt.title("Age by Passenger Class,Titanic")
-```
-<img width="830" height="576" alt="image" src="https://github.com/user-attachments/assets/6923083e-b0ed-4a63-9126-cd063fc55c53" />
 
 
-```python
-sns.violinplot(x="day",y="total_bill",hue="smoker",data=tips,linewidth=2,width=0.6,palette="Set3",inner="quartile")
-plt.xlabel("Day of the week")
-plt.ylabel("Total Bill")
-plt.title("Violin Plot of Total Bill by Day and Smoker Status")
-```
-<img width="676" height="472" alt="image" src="https://github.com/user-attachments/assets/195f82d7-0962-4b77-b061-8eb55a47a306" />
 
 
-```python
-import seaborn as sns
-sns.set(style='whitegrid')
-tip=sns.load_dataset('tips')
-sns.violinplot(x='day',y='tip',data=tip)
-```
-<img width="710" height="476" alt="image" src="https://github.com/user-attachments/assets/6df30572-7f39-4e78-a588-1ed671456e3a" />
 
 
-```python
-sns.set(style='whitegrid')
-tip=sns.load_dataset('tips')
-sns.violinplot(x=tip["total_bill"])
-```
-<img width="640" height="467" alt="image" src="https://github.com/user-attachments/assets/7e9e3852-14a0-466b-8501-f3eabbba351f" />
 
 
-```python
-sns.set(style='whitegrid')
-tip=sns.load_dataset('tips')
-sns.violinplot(x="tip",y="day",data=tip)
-```
-<img width="736" height="461" alt="image" src="https://github.com/user-attachments/assets/1e888191-32f4-4f6a-9880-2144ecfb97a6" />
 
 
-```python
-sns.kdeplot(data=tips,x='total_bill',hue='time',multiple='fill',linewidth=3,palette='Set3',alpha=0.8)
-```
-<img width="730" height="462" alt="image" src="https://github.com/user-attachments/assets/32f8accd-f06c-47ca-8f47-3fba56471247" />
 
 
-```python
-sns.kdeplot(data=tips,x='total_bill',hue='time',multiple='layer',linewidth=3,palette='Set2',alpha=0.8)
-```
-<img width="701" height="461" alt="image" src="https://github.com/user-attachments/assets/4af05a4a-6ebd-4ed4-ad94-dd1c736eb477" />
-
-```python
-sns.kdeplot(data=tips,x='total_bill',hue='time',multiple='stack',linewidth=3,palette='Set2',alpha=0.8)
-```
-<img width="719" height="487" alt="image" src="https://github.com/user-attachments/assets/4667aa45-4157-4aa2-a2fd-aea66b4452ba" />
 
 
-```python
-data=np.random.randint(low=1,high=100,size=(10,10))
-print("The data to be plotted:\n")
-print(data)
-```
-<img width="342" height="220" alt="image" src="https://github.com/user-attachments/assets/8871d80c-6975-4e16-9dd1-96e536941993" />
 
 
-```python
-hm=sns.heatmap(data=data)
-```
-<img width="631" height="423" alt="image" src="https://github.com/user-attachments/assets/efdfdcb3-f971-43e1-94a4-f040b2b126a4" />
 
 
-```python
-tips=sns.load_dataset('tips')
-numeric_cols=tips.select_dtypes(include=np.number).columns
-corr=tips[numeric_cols].corr()
-sns.heatmap(corr,annot=True,cmap="plasma",linewidth=0.5)
-```
-<img width="614" height="450" alt="image" src="https://github.com/user-attachments/assets/5e48e175-0cc7-4919-be51-ea46d4242be0" />
+
+
+
+
+
+
+
+
 
 
 # Result:
